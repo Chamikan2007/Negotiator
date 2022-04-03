@@ -1,3 +1,4 @@
+using Negotiator.Extensions;
 using Negotiator.TestWebAPI.Contracts;
 using Negotiator.TestWebAPI.Services;
 
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddNegotiator();
 
 builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddScoped<IWeatherStatesService, WeatherStatesService>();

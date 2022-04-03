@@ -1,14 +1,17 @@
-﻿using Negotiator.TestWebAPI.Contracts;
+﻿using Negotiator.Contracts;
+using Negotiator.TestWebAPI.Contracts;
 
 namespace Negotiator.TestWebAPI.Services
 {
     public class WeatherForecastService : IWeatherForecastService
     {
         public readonly IWeatherStatesService _weatherStatesService;
+        public readonly INegotiator _negotiator;
 
-        public WeatherForecastService(IWeatherStatesService weatherStatesService)
+        public WeatherForecastService(IWeatherStatesService weatherStatesService, INegotiator negotiator)
         {
             _weatherStatesService = weatherStatesService;
+            _negotiator = negotiator;
         }
 
         public IEnumerable<WeatherForecast> GetForecasts()
