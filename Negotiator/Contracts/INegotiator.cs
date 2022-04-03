@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Negotiator.Contracts
+﻿namespace Negotiator.Contracts
 {
     public interface INegotiator
     {
+        public TResponse Request<TRequestHandler, TResponse, TRequestParams>(TRequestParams requestParams)
+            where TRequestHandler : INegotiatorRequestHandler<TResponse, TRequestParams>;
     }
 }

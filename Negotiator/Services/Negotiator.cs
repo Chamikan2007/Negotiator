@@ -1,4 +1,5 @@
-﻿using Negotiator.Contracts;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Negotiator.Contracts;
 
 namespace Negotiator.Services
 {
@@ -9,6 +10,17 @@ namespace Negotiator.Services
         public Negotiator(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+        }
+
+        public TResponse Request<TRequestHandler, TResponse, TRequestParams>(TRequestParams requestParams)
+            where TRequestHandler : INegotiatorRequestHandler<TResponse, TRequestParams>
+        {
+            var requetsHandler = _serviceProvider.GetService<TRequestHandler>();
+
+            if (requetsHandler != null)
+            return requetsHandler.ExecuteRequest(requestParams);
+
+            return default;
         }
     }
 }

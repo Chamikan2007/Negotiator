@@ -13,7 +13,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddNegotiator();
 
-builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>()
+    .AddScoped<IWeatherForecastService_GetForecasts_GetSummaryStates_Request, WeatherForecastService_GetForecasts_GetSummaryStates_Request> ();
+
 builder.Services.AddScoped<IWeatherStatesService, WeatherStatesService>();
 
 var app = builder.Build();
