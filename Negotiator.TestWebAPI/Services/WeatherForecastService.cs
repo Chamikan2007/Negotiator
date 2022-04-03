@@ -14,7 +14,7 @@ namespace Negotiator.TestWebAPI.Services
 
         public IEnumerable<WeatherForecast> GetForecasts()
         {
-            var summaries = _negotiator.Request<IWeatherForecastService_GetForecasts_GetSummaryStates_Request, string[], int>(2);
+            var summaries = _negotiator.Request<IWeatherForecastService_GetForecasts_GetSummaryStates_Request, string[]>();
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -35,7 +35,7 @@ namespace Negotiator.TestWebAPI.Services
             _weatherStatesService = weatherStatesService;
         }
 
-        public string[] ExecuteRequest(int requstParams)
+        public string[] ExecuteRequest()
         {
             return _weatherStatesService.GetSummaryStates();
         }

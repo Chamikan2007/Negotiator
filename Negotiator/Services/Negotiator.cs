@@ -18,7 +18,18 @@ namespace Negotiator.Services
             var requetsHandler = _serviceProvider.GetService<TRequestHandler>();
 
             if (requetsHandler != null)
-            return requetsHandler.ExecuteRequest(requestParams);
+                return requetsHandler.ExecuteRequest(requestParams);
+
+            return default;
+        }
+
+        public TResponse Request<TRequestHandler, TResponse>()
+            where TRequestHandler : INegotiatorRequestHandler<TResponse>
+        {
+            var requetsHandler = _serviceProvider.GetService<TRequestHandler>();
+
+            if (requetsHandler != null)
+                return requetsHandler.ExecuteRequest();
 
             return default;
         }
