@@ -17,7 +17,7 @@ namespace Negotiator.TestWebAPI.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public Task<IEnumerable<WeatherForecast>> Get()
         {
             return _weatherForecastService.GetForecasts();
         }

@@ -4,10 +4,10 @@ namespace Negotiator.TestWebAPI.Contracts
 {
     public interface IWeatherForecastService
     {
-        public IEnumerable<WeatherForecast> GetForecasts();
+        public Task<IEnumerable<WeatherForecast>> GetForecasts();
     }
 
-    public interface IWeatherForecastService_GetForecasts_GetSummaryStates_Request : INegotiatorRequestHandler<string[]>
+    public interface IWeatherForecastService_GetForecasts_GetSummaryStates_Request : IAsyncNegotiatorRequestHandler<string[]>
     {
     }
 }
